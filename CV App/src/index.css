@@ -87,8 +87,8 @@ h1{
 .education-item{
   cursor: pointer;
   margin: .3rem 1rem;
-  border-top: 5px solid var(--primary-color);
-  width: 100%;
+  border-top: 2px solid var(--primary-color);
+  width: 60%;
 }
 
 .experience-prvw{

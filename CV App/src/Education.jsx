@@ -6,15 +6,17 @@ export function Education({ education, setEducation }) {
     ]);
   }
 
-  function toggleIsOpen (index){
-    
+  function toggleIsOpen(index) {
     const newEducation = [...education];
-    newEducation[index] = {...newEducation[index], isOpen: !newEducation[index].isOpen}
-    setEducation(newEducation)
+    newEducation[index] = {
+      ...newEducation[index],
+      isOpen: !newEducation[index].isOpen,
+    };
+    setEducation(newEducation);
   }
 
-  function handleDeleteItem(index){
-    setEducation(education.filter((_,i) => i !== index))
+  function handleDeleteItem(index) {
+    setEducation(education.filter((_, i) => i !== index));
   }
 
   return (
@@ -24,7 +26,20 @@ export function Education({ education, setEducation }) {
 
       {education.map((item, index) =>
         item.isOpen ? (
-          <form key={index} onSubmit={ (e) => {e.preventDefault(); toggleIsOpen(index)}} >
+          <form
+            key={index}
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (
+                !item.schoolName.trim() &&
+                !item.titleOfStudy.trim() &&
+                !item.grade.trim()
+              ) {
+                handleDeleteItem(index);
+              } else {
+              toggleIsOpen(index)};
+            }}
+          >
             <label htmlFor="schoolName">School name</label>
             <input
               name="schoolName"
@@ -61,12 +76,20 @@ export function Education({ education, setEducation }) {
             />
 
             <span>
-              <button type="submit" >Save</button>
-              <button type="button" onClick={() => handleDeleteItem(index)}>Delete</button>
+              <button type="submit">Save</button>
+              <button type="button" onClick={() => handleDeleteItem(index)}>
+                Delete
+              </button>
             </span>
           </form>
         ) : (
-          <p className='education-item' key={index} onClick={ ()=> toggleIsOpen(index)}>{item.schoolName} </p>
+          <p
+            className="education-item"
+            key={index}
+            onClick={() => toggleIsOpen(index)}
+          >
+            {item.schoolName}{" "}
+          </p>
         )
       )}
     </div>
