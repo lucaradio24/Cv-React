@@ -1,0 +1,16 @@
+.app-container{
+  display: flex;
+  
+}
+
+.cv-builder{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  border: 4px solid black;
+}
