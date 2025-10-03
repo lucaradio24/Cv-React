@@ -1,8 +1,13 @@
+import { useState } from "react";
+
 export function Education({ education, setEducation }) {
+  const [isOpen, setIsOpen] = useState(false)
+  
   function handleAddEducation() {
     setEducation(() => [
       ...education,
-      { schoolName: "", titleOfStudy: "", grade: "", isOpen: true },
+      { schoolName: "", titleOfStudy: "", grade: "", startDate:'',
+        endDate:'', isOpen: true },
     ]);
   }
 
@@ -19,11 +24,13 @@ export function Education({ education, setEducation }) {
     setEducation(education.filter((_, i) => i !== index));
   }
 
-  return (
-    <div className="card">
-      <h1>Education</h1>
-      <button onClick={handleAddEducation}>Add education</button>
+  const isAnyOpen = education.some(item => item.isOpen)
 
+  return (
+    <div className="card other">
+      <h2 onClick={() => setIsOpen(!isOpen)}><i className="fa-solid fa-graduation-cap"></i> Education <i className={`fa-solid fa-chevron-down${isOpen ? ' open' : ''}`}></i></h2>
+    {isOpen && (
+      <>
       {education.map((item, index) =>
         item.isOpen ? (
           <form
@@ -37,7 +44,8 @@ export function Education({ education, setEducation }) {
               ) {
                 handleDeleteItem(index);
               } else {
-              toggleIsOpen(index)};
+                toggleIsOpen(index);
+              }
             }}
           >
             <label htmlFor="schoolName">School name</label>
@@ -75,23 +83,45 @@ export function Education({ education, setEducation }) {
               }}
             />
 
-            <span>
-              <button type="submit">Save</button>
-              <button type="button" onClick={() => handleDeleteItem(index)}>
-                Delete
+            <label htmlFor="startDate">Start date</label>
+            <input name="startDate" type="text" value={item.startDate}
+            onChange={(e) => {
+              const newEducation = [...education];
+              newEducation[index] = {...item, startDate: e.target.value};
+              setEducation(newEducation)
+            }} />
+          
+            <label htmlFor="endDate">End date</label>
+            <input name="endDate" type="text" value={item.endDate}
+            onChange={(e) => {
+              const newEducation = [...education];
+              newEducation[index] = {...item, endDate: e.target.value};
+              setEducation(newEducation)
+            }} />
+
+          
+
+            <span className="buttons">
+              <button type="submit" className="save">Save</button>
+              <button className='cancel'type="button" onClick={() => handleDeleteItem(index)}>
+               <i className="fa-solid fa-trash"></i> Delete
               </button>
             </span>
           </form>
         ) : (
           <p
-            className="education-item"
+            className='education item'
             key={index}
             onClick={() => toggleIsOpen(index)}
+            hidden={isAnyOpen}
           >
             {item.schoolName}{" "}
           </p>
         )
       )}
+      <button className='create-form' onClick={handleAddEducation} hidden={isAnyOpen}>Add education</button>
+      </>
+    )}
     </div>
   );
 }

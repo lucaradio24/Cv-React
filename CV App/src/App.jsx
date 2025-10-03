@@ -6,6 +6,7 @@ import { Education } from "./Education";
 import { Experience } from "./Experience";
 import { EducationPrvw } from "./EducationPrvw";
 import { ExperiencePrvw } from "./ExperiencePrvw";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export function App() {
   const [general, setGeneral] = useState({
@@ -17,11 +18,7 @@ export function App() {
 
   const [education, setEducation] = useState([]);
 
-  const [experience, setExperience] = useState({
-    companyName: "",
-    positionTitle: "",
-    description: "",
-  });
+  const [experience, setExperience] = useState([])
 
   return (
     <div className="app-container">

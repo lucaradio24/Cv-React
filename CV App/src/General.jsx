@@ -2,8 +2,8 @@ import { useState } from "react";
 
 export function General({ general, setGeneral }) {
   return (
-    <div className="card">
-      <h1>Personal details</h1>
+    <div className="card personal">
+      <h2>Personal details</h2>
       <label for="fullName">Full name</label>
       <input
         type="text"

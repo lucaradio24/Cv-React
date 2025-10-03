@@ -6,13 +6,13 @@ export function GeneralPrvw({general}){
         <>
 
         <div className="name-prvw">
-            <h1>Nome: {general.name}</h1>
+            <h1>{general.name}</h1>
         </div>
 
         <div className="general-details">
-            <p>Email: {general.email}</p>
-            <p>Phone: {general.phone}</p>
-            <p>Location: {general.location}</p>
+            <p> <i class="fa-solid fa-envelope"></i> {general.email}</p>
+            <p><i class="fa-solid fa-phone"></i> {general.phone}</p>
+            <p><i class="fa-solid fa-location-dot"></i> {general.location}</p>
         </div>
         </>
     )
