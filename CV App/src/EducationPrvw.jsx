@@ -7,7 +7,7 @@ export function EducationPrvw({ education }) {
             
           <div className="education-info-group">
           <p>{item.startDate} - {item.endDate}</p>
-        <p>Grade: {item.grade}</p>
+        <p>{item.grade ? `Grade: ${item.grade}` : ''}</p>
           </div>
           <div className="education-info-group">
         <p className="bold-text">{item.schoolName}</p>

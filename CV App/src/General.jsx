@@ -3,7 +3,7 @@ import { useState } from "react";
 export function General({ general, setGeneral }) {
   return (
     <div className="card personal">
-      <h2>Personal details</h2>
+      <h2><i class="fa-solid fa-user"></i> Personal details</h2>
       <label for="fullName">Full name</label>
       <input
         type="text"

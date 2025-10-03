@@ -1,5 +1,7 @@
 .cv-preview{
-  width: 60vw;
+    margin-top: 1rem;
+   margin-right: 2rem;
+    width: 60vw;
   display: flex;
   flex-direction: column;
   background-color: var(--secondary-color);
@@ -50,6 +52,11 @@
 
 .bold-text{
     font-weight: 600;
+    
+}
+
+.titleAndPosition p{
+    margin-bottom: 0;
 }
 
 .experience-info{
@@ -64,6 +71,6 @@
 }
 
 .experience-info-group p{
-    margin: 1rem;
+    margin-left: 0;
     
 }

@@ -1,5 +1,6 @@
 
 @import './Prvw.css';
+@import './Actions.css';
 
 :root{
   --primary-color: #f3f4f6;
@@ -32,6 +33,10 @@ button{
 
 }
 
+.personal h2{
+  padding-left: 0;
+}
+
 .app-container{
   display: flex;
   
@@ -48,7 +53,6 @@ button{
 .card{
   display: flex;
   flex-direction: column;
-  
   border-radius: 1rem;
   gap: .5rem;
   padding: 0 0 1rem 0;

@@ -12,8 +12,10 @@ export function ExperiencePrvw({ experience }) {
       </div>
 
       <div className="experience-info-group">
-        <p className="bold-text">{item.companyName}</p>
-        <p>{item.positionTitle}</p>
+        
+          <p className="bold-text" style={{marginBottom:'0'}}>{item.companyName}</p>
+          <p style={{marginTop:'0'}}>{item.positionTitle}</p>
+        
         <p>{item.description}</p>
       </div>
       </div>
