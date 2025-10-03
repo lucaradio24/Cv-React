@@ -8,6 +8,7 @@ import { EducationPrvw } from "./EducationPrvw";
 import { ExperiencePrvw } from "./ExperiencePrvw";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Actions } from "./Actions";
+import { Modal } from "./Modal";
 
 export function App() {
   const [general, setGeneral] = useState({
@@ -21,6 +22,8 @@ export function App() {
 
   const [experience, setExperience] = useState([]);
 
+  const [confirmModal, setConfirmModal] = useState(false);
+
   const exampleGeneral = {
     name: "Luca Ambrosino",
     email: "luca.ambrosino@gmail.com",
@@ -32,7 +35,7 @@ export function App() {
     {
       schoolName: "Università Federico II",
       titleOfStudy: "Laurea triennale Economia",
-      grade:'110/110',
+      grade: "110/110",
       startDate: "2018",
       endDate: "2021",
     },
@@ -68,7 +71,6 @@ export function App() {
   }
 
   function handleResetPreview() {
-    
     setGeneral({});
     setEducation([]);
     setExperience([]);
@@ -80,7 +82,18 @@ export function App() {
         <Actions
           handleLoadExample={handleLoadExample}
           handleResetPreview={handleResetPreview}
+          setConfirmModal={setConfirmModal}
         />
+        {confirmModal && (
+          <Modal
+            onConfirm={() => {
+              handleResetPreview();
+              setConfirmModal(false);
+            }}
+            onCancel={() => setConfirmModal(false)}
+          />
+        )}
+
         <General general={general} setGeneral={setGeneral} />
         <Education education={education} setEducation={setEducation} />
         <Experience experience={experience} setExperience={setExperience} />

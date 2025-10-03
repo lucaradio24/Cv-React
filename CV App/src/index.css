@@ -1,6 +1,7 @@
 
 @import './Prvw.css';
 @import './Actions.css';
+@import './Modal.css';
 
 :root{
   --primary-color: #f3f4f6;
